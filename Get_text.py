@@ -14,14 +14,12 @@ def get_text(key_dict):
                                       host="127.0.0.1",
                                       port="5432",
                                       database="anekdot_db")
-
         # Курсор для выполнения операций с базой данных
         cursor = connection.cursor()
         # Выполнение SQL-запроса
         cursor.execute(f"SELECT id, topic, content FROM anekdot WHERE id = '{id_send}'; ")
         # Получить результат
         records = cursor.fetchone()
-        print(len(records), type(records), records)
         return records
 
     except (Exception, Error) as error:

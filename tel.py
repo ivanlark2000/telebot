@@ -2,16 +2,12 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 from aiogram.utils import executor
 from aiogram.utils.markdown import text
-
 from Get_text import get_text
-from config import TOKEN, list_of_text_in_base
+from config import TOKEN
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
-button_hi = KeyboardButton('Привет! 👋')
-button_fact = KeyboardButton('Факт')
-greet_kb1 = ReplyKeyboardMarkup(resize_keyboard=True).add(button_hi)
 button1 = KeyboardButton('Про Армию')
 button2 = KeyboardButton('Про семью')
 button3 = KeyboardButton('Про ВОВ')
@@ -43,26 +39,26 @@ button28 = KeyboardButton('️Про чукчей')
 button29 = KeyboardButton('Про вовочку')
 button30 = KeyboardButton('Про новых русских')
 button31 = KeyboardButton('Про шоу бизнес')
-button32 = KeyboardButton('Народные')
-button33 = KeyboardButton('Советские')
-button34 = KeyboardButton('Цитаты')
-button35 = KeyboardButton('Про Ржевского')
-button36 = KeyboardButton('Про компьютеры')
-button37 = KeyboardButton('Про кино')
-button38 = KeyboardButton('Про животных')
-button39 = KeyboardButton('Политические')
-button40 = KeyboardButton('X-files')
+button32 = KeyboardButton('Про алкоголиков')
+button33 = KeyboardButton('Про детей')
+button34 = KeyboardButton('Про судей')
+button35 = KeyboardButton('Народные')
+button36 = KeyboardButton('Советские')
+button37 = KeyboardButton('Цитаты')
+button38 = KeyboardButton('Про Ржевского')
+button39 = KeyboardButton('Про компьютеры')
+button40 = KeyboardButton('Про кино')
+button41 = KeyboardButton('Про животных')
+button42 = KeyboardButton('Политические')
+button43 = KeyboardButton('X-files')
+button44 = KeyboardButton('Про мужчин')
 
-markup1 = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button1).add(button2).add(button3).add(
-    button4) \
-    .add(button5).add(button6).add(button7).add(button8).add(button9).add(button10).add(button11).add(button12).add(
-    button13) \
-    .add(button14).add(button15).add(button16).add(button17).add(button18).add(button19).add(button20).add(
-    button21).add(button22) \
-    .add(button23).add(button24).add(button25).add(button26).add(button27).add(button28).add(button29).add(
-    button30).add(button31) \
-    .add(button32).add(button33).add(button34).add(button35).add(button36).add(button37).add(button38).add(
-    button39).add(button40)
+markup1 = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button1).add(button2).add(button3) \
+    .add(button4).add(button5).add(button6).add(button7).add(button8).add(button9).add(button10).add(button11) \
+    .add(button12).add(button13).add(button14).add(button15).add(button16).add(button17).add(button18).add(button19) \
+    .add(button20).add(button21).add(button22).add(button23).add(button24).add(button25).add(button26).add(button27) \
+    .add(button28).add(button29).add(button30).add(button31).add(button32).add(button33).add(button34).add(button35) \
+    .add(button36).add(button37).add(button38).add(button39).add(button40).add(button41).add(button42).add(button43)
 
 start_message = text(
     "/start - приветствие",
@@ -98,9 +94,220 @@ async def process_start_command(message: types.Message):
     await message.reply("Выбирай что по душе", reply_markup=markup1)
 
 
-if 'Про армию':
-    key_dict = "pro-armiu"
-    send_text = get_text(key_dict)[2]
+@dp.message_handler(regexp= 'Про армию')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-armiu')[2])
+
+
+@dp.message_handler(regexp= 'Цитаты')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('tsitati')[2])
+
+
+@dp.message_handler(regexp= 'Афоризмы')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('aforizmi')[2])
+
+
+@dp.message_handler(regexp= 'Про ВОВ')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-wow')[2])
+
+
+@dp.message_handler(regexp= 'Про друзей')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-druzey')[2])
+
+
+@dp.message_handler(regexp= 'Про дорогу')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('dorognie-pro-dorogu')[2])
+
+
+@dp.message_handler(regexp= 'Про милицию')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-militsiyu')[2])
+
+
+@dp.message_handler(regexp= 'Про иностранцев')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-inostrantsev')[2])
+
+
+@dp.message_handler(regexp= 'Черный Юмор')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('cherniy-yumor')[2])
+
+
+@dp.message_handler(regexp= 'Про студентов')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-studentov')[2])
+
+
+@dp.message_handler(regexp= 'Про наркоманов')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-narkomanov')[2])
+
+
+@dp.message_handler(regexp= 'Медецинские')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('meditsinskie')[2])
+
+
+
+@dp.message_handler(regexp= '️Сказочные')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('skazochnie')[2])
+
+
+@dp.message_handler(regexp= 'Про штирлица')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-shtirlitsa')[2])
+
+
+@dp.message_handler(regexp= 'Про школу')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('shkolnie-i-pro-shkolu')[2])
+
+
+@dp.message_handler(regexp='Про рекламу')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('Pro-reklamu')[2])
+
+
+@dp.message_handler(regexp= 'Про тещу')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-teshu')[2])
+
+
+@dp.message_handler(regexp= 'Про криминал')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('kriminalnie')[2])
+
+
+@dp.message_handler(regexp= 'Про евреев')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-evreev')[2])
+
+
+@dp.message_handler(regexp= 'Про сисадминов')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-sisadminov')[2])
+
+
+@dp.message_handler(regexp= 'Про программистов')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-programmistov')[2])
+
+
+@dp.message_handler(regexp= 'Старые и бородатые')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('starie-i-borodatie')[2])
+
+
+@dp.message_handler(regexp= 'Про бухгалтеров')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-buhgalterov')[2])
+
+
+@dp.message_handler(regexp= 'Про Била Гейтса')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-billa-geytsa')[2])
+
+
+@dp.message_handler(regexp= 'Пошлые')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('poshlie-i-intimnie')[2])
+
+
+@dp.message_handler(regexp= 'Про геншин')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-genshin')[2])
+
+
+@dp.message_handler(regexp= 'Разные')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('raznie')[2])
+
+
+@dp.message_handler(regexp= '️Про чукчей')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-chukchu')[2])
+
+
+@dp.message_handler(regexp= 'Про вовочку')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-vovochku')[2])
+
+
+@dp.message_handler(regexp= 'Про новых русских')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-novih-russkih')[2])
+
+
+@dp.message_handler(regexp= 'Про шоу бизнес')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('po-shou-biznes')[2])
+
+
+@dp.message_handler(regexp= 'Про алкоголиков')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-alkogolikov')[2])
+
+
+@dp.message_handler(regexp= 'Про мужчин')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-mugchin')[2])
+
+
+@dp.message_handler(regexp= 'Про детей')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-detey')[2])
+
+
+@dp.message_handler(regexp= 'Про судей')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-sudey')[2])
+
+
+@dp.message_handler(regexp= 'Народные')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('narodnie')[2])
+
+
+@dp.message_handler(regexp= 'Советские')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('sovetskie')[2])
+
+
+@dp.message_handler(regexp= 'Про Ржевского')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-poruchika-rgevskogo')[2])
+
+
+@dp.message_handler(regexp= 'Про компьютеры')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-kompyuteri')[2])
+
+
+@dp.message_handler(regexp= 'Про кино')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-kino')[2])
+
+
+@dp.message_handler(regexp= 'Про животных')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-givotnih')[2])
+
+
+@dp.message_handler(regexp= 'Политические')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('politicheskie')[2])
+
+
+@dp.message_handler(regexp='X-files')
+async def msg_handler(message: types.Message):
+    await message.reply(get_text('pro-putina')[2])
 
 
 @dp.message_handler(commands=['info'])
