@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
-import threading
 
 
 class Currency_DOLL:
@@ -44,8 +43,8 @@ class Currency_DOLL:
             self.send_mail()
 
         print("Сейчас курс: 1 доллар = " + str(currency))
-        time.sleep(5)  # Засыпание программы на 5 секунды
-        evro.check_currency()
+        time.sleep(3)  # Засыпание программы на 3 секунды
+        self.check_currency()
 
         # Отправка почты через SMTP
         def send_mail(self):
@@ -106,8 +105,8 @@ class Currency_EVRO:
             self.send_mail()
 
         print("Сейчас курс: 1 евро = " + str(currency))
-        time.sleep(5)  # Засыпание программы на 5 секунды
-        dollar.check_currency()
+        time.sleep(3)  # Засыпание программы на 3 секунды
+        self.check_currency()
 
         # Отправка почты через SMTP
         def send_mail(self):
@@ -130,5 +129,11 @@ class Currency_EVRO:
             server.quit()
 
 
-evro = Currency_EVRO()
-dollar = Currency_DOLL()
+# Создание объекта и вызов метода
+currency_DOLL = Currency_DOLL()
+# currency_DOLL.check_currency()
+currency_EVRO = Currency_EVRO()
+print(currency_DOLL.__dict__['current_converted_price'])
+print(currency_EVRO.__dict__['current_converted_price'])
+# currency_EVRO.check_currency()
+# print(getattr(Currency_EVRO, "difference"))

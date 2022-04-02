@@ -4,6 +4,8 @@ from aiogram.utils import executor
 from aiogram.utils.markdown import text
 from Get_text import get_text
 from config import TOKEN
+from pars import evro, dollar
+import threading
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
@@ -92,6 +94,12 @@ async def process_start_command(message: types.Message):
 @dp.message_handler(commands=['anek'])
 async def process_start_command(message: types.Message):
     await message.reply("Выбирай что по душе", reply_markup=markup1)
+
+
+@dp.message_handler(commands=['doll'])
+async def process_start_command(message: types.Message):
+    await message.reply(f"Сейчас курс: \n 1 евро = {evro.__dict__['current_converted_price']}\
+     \n 1 доллар = {dollar.__dict__['current_converted_price']}")
 
 
 @dp.message_handler(regexp= 'Про армию')
@@ -321,4 +329,7 @@ async def process_help_command(message: types.Message):
 
 
 if __name__ == '__main__':
+    money = threading.Thread(name="money", target=dollar.check_currency)
+    money.start()
     executor.start_polling(dp)
+
