@@ -162,7 +162,6 @@ async def msg_handler(message: types.Message):
     await message.reply(get_text('meditsinskie')[2])
 
 
-
 @dp.message_handler(regexp= '️Сказочные')
 async def msg_handler(message: types.Message):
     await message.reply(get_text('skazochnie')[2])
@@ -329,7 +328,7 @@ async def process_help_command(message: types.Message):
 
 
 if __name__ == '__main__':
-    money = threading.Thread(name="money", target=dollar.check_currency)
+    money = threading.Thread(name="money", target=dollar.check_currency)  # Запускаем процесс параллельно
     money.start()
     executor.start_polling(dp)
 

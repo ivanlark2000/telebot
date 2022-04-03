@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
-import threading
+
+from Get_text import send_currency_EVRO
 
 
 class Currency_DOLL:
@@ -45,6 +46,7 @@ class Currency_DOLL:
 
         print("Сейчас курс: 1 доллар = " + str(currency))
         time.sleep(5)  # Засыпание программы на 5 секунды
+        send_currency_EVRO(currency)
         evro.check_currency()
 
         # Отправка почты через SMTP
