@@ -129,11 +129,5 @@ class Currency_EVRO:
             server.quit()
 
 
-# Создание объекта и вызов метода
 currency_DOLL = Currency_DOLL()
-# currency_DOLL.check_currency()
 currency_EVRO = Currency_EVRO()
-print(currency_DOLL.__dict__['current_converted_price'])
-print(currency_EVRO.__dict__['current_converted_price'])
-# currency_EVRO.check_currency()
-# print(getattr(Currency_EVRO, "difference"))

@@ -4,8 +4,9 @@ from aiogram.utils import executor
 from aiogram.utils.markdown import text
 from Get_text import get_text
 from config import TOKEN
-from pars import evro, dollar
 import threading
+
+from pars_ import dollar, evro, btc
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
@@ -328,7 +329,11 @@ async def process_help_command(message: types.Message):
 
 
 if __name__ == '__main__':
-    money = threading.Thread(name="money", target=dollar.check_currency)  # Запускаем процесс параллельно
-    money.start()
+    d = threading.Thread(name='doll', target=dollar.check_currency)
+    e = threading.Thread(name='evro', target=evro.check_currency)
+    b = threading.Thread(name='btc', target=btc.check_currency)
+    d.start()
+    e.start()
+    b.start()
     executor.start_polling(dp)
 

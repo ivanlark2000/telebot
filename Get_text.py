@@ -6,6 +6,7 @@ from config import user_DB, password_DB, list_of_text_in_base
 host = "127.0.0.1"
 port = 5432
 
+
 def get_text(key_dict):
     """Функция для генерации случайного ID в нужном диапазоне и отправления запросов в БД и получения данных с базы"""
     id_send = random.randint(list_of_text_in_base[key_dict][0], list_of_text_in_base[key_dict][1])
